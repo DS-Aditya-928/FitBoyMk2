@@ -55,7 +55,7 @@ void musicViewer(void* arg)
 
     case DOWN_B:
       {
-        mcService.characteristic->setValue("2");
+        mcService.characteristic->setValue("a2");
         mcService.characteristic->notify();
         break;
       }
