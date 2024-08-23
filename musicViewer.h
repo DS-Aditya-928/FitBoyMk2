@@ -34,14 +34,29 @@ void musicViewer(void* arg)
   oled.display();
   switch (currentButton)
   {
+    /*
+    "1" = pause/play
+    "2" = rewind
+    "3" = FF
+    */
     case SELECT_B:
       {
+        mcService.characteristic->setValue("1");
+        mcService.characteristic->notify();
         break;
       }
 
     case UP_B:
       {
+        mcService.characteristic->setValue("3");
+        mcService.characteristic->notify();
+        break;
+      }
 
+    case DOWN_B:
+      {
+        mcService.characteristic->setValue("2");
+        mcService.characteristic->notify();
         break;
       }
 
