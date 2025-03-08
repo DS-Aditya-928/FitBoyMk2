@@ -32,8 +32,8 @@ template <typename T> int signum(T val)
 
 #include "globalVars.h"
 
+#include "musicViewer.h"
 #include "MainMenu.h"
 #include "NotViewer.h"
 #include "FocusMode.h"
 #include "HealthViewer.h"
-#include "musicViewer.h"

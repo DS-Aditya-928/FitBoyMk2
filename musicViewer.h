@@ -3,6 +3,16 @@
 
 BTInstance mcService(MUSIC_CONTROL_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE | BLECharacteristic::PROPERTY_NOTIFY | BLECharacteristic::PROPERTY_INDICATE, NULL);
 
+void musicInit(void* arg)
+{
+  /*
+  hR = LCDManager::registerWriter(2);
+  hR->setFocusDeets("Heart Rate");
+  calBurn = LCDManager::registerWriter(2);
+  calBurn->setFocusDeets("Calories Burned");
+  */
+}
+
 void musicViewer(void* arg)
 {
   oled.clearDisplay();
@@ -41,22 +51,26 @@ void musicViewer(void* arg)
     */
     case SELECT_B:
       {
+        //Serial.println("Select ");
         mcService.characteristic->setValue("1");
         mcService.characteristic->notify();
+        delay(buttonDelay);
         break;
       }
 
     case UP_B:
       {
-        mcService.characteristic->setValue("3");
+        mcService.characteristic->setValue("2");
         mcService.characteristic->notify();
+        delay(buttonDelay);
         break;
       }
 
     case DOWN_B:
       {
-        mcService.characteristic->setValue("a2");
+        mcService.characteristic->setValue("3");
         mcService.characteristic->notify();
+        delay(buttonDelay);
         break;
       }
 

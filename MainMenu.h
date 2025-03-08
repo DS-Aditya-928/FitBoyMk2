@@ -23,13 +23,12 @@ void mainMenu(void* arg)
     oled.print(notBuf.size());
   }
 
-  /*
-  if (modeGet(MUSIC_M))
+  
+  if (mvApp.enabled)
   {
     oled.setCursor(0, 10);
     oled.print("M");
   }
-  */
 
   oled.display();
 

@@ -6,7 +6,7 @@ public:
   {
   }
 
-  void printScrollText(String text, long startTime, int maxPixels = 128)  //only supports pixel scroll on strings covering the entire length of the display.
+  void printScrollText(String text, long startTime, int maxPixels = 128)
   {
     //Adafruit_GFX_Button testButton;
     //testButton.initButton(this, this->getCursorX() + 15, this->getCursorY() + 4, 30, 8, SH110X_WHITE, SH110X_BLACK, SH110X_WHITE, "Testygdfghjuid", 1, 1);
@@ -48,7 +48,7 @@ public:
       cursorComp = ((int)(signum(bVal) == -1) * oneLet) + pCounter;
       pxAfterLim = (text.length() * oneLet) - cursorComp - maxPixels + 1;
 
-      Serial.println(String(lCounter) + " " + String(pCounter) + " " + String(pxAfterLim) + " " + String(bVal) + " Demo");
+      //Serial.println(String(lCounter) + " " + String(pCounter) + " " + String(pxAfterLim) + " " + String(bVal) + " Demo");
 
       if (pxAfterLim > 0)
       {

@@ -28,12 +28,13 @@ void nvHomePage(void* arg)
     oled.setCursor(128 - (numMsgD.length()*6), 0);
     oled.print(numMsgD);
 
-    int numChars = (128 - ((notBuf[dispIndex].appName.length() + 1) * 6)) / 6;
-    int numPx = (128 - ((notBuf[dispIndex].title.substring(0, numChars).length()) * 6));
+    int numPx = min((int)(((notBuf[dispIndex].appName.length()) * 6)), 60);
     oled.setCursor(0, 8);
-    oled.print(notBuf[dispIndex].appName);
+    oled.printScrollText(notBuf[dispIndex].appName, 0, numPx);
     oled.setCursor(numPx, 8);
-    oled.print(notBuf[dispIndex].title.substring(0, 16));
+    oled.print("|");
+    oled.setCursor(numPx + 6, 8);
+    oled.printScrollText(notBuf[dispIndex].title, 500, 128 - numPx);
     oled.setCursor(0, 16);
 
     if(notBuf[dispIndex].text.compareTo("null"))
@@ -234,4 +235,4 @@ class ndbCB : public BLECharacteristicCallbacks
   }
 };
 
-App nvApp(notViewerINIT, nvHomePage, NULL, { new BTInstance(NOTBUF_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE, new nbCB()), new BTInstance(NOTDELBUF_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE, new ndbCB()), &delService });
+App nvApp(notViewerINIT, nvHomePage, NULL, { new BTInstance(NOTBUF_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE, new nbCB()), new BTInstance(NOTDELBUF_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE, new ndbCB()), &delService});
