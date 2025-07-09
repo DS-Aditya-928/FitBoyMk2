@@ -39,7 +39,7 @@ void musicViewer(void* arg)
   oled.printScrollText(musicMeta.artistName, 500, 128);
 
   oled.drawRect(4, 50, 120, 10, SH110X_WHITE);
-  oled.fillRect(4, 50, ((float)((musicMeta.playing ? (millis() - musicMeta.startTime) : 0) + musicMeta.startLoc) / musicMeta.length) * 120, 10, SH110X_WHITE);
+  oled.fillRect(4, 50, ((float)((musicMeta.playing ? ((millis()/1000) - musicMeta.startTime) : 0) + musicMeta.startLoc) / musicMeta.length) * 120, 10, SH110X_WHITE);
 
   oled.display();
   switch (currentButton)
