@@ -9,6 +9,7 @@ void focusMenu(void* arg)
   oled.print("Focus Mode");
   oled.setTextSize(1);
 
+  /*
   for (int i = baseIndex; i < LCDManager::dataTw[2].size() && (i - baseIndex < 7); i++)
   {
     oled.setCursor(0, 8 + ((i - baseIndex) * 8));
@@ -29,7 +30,7 @@ void focusMenu(void* arg)
       oled.print("<");
     }
   }
-
+  */
   oled.display();
 
   switch (currentButton)
