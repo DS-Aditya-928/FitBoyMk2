@@ -1,3 +1,6 @@
+#ifndef INCLUDES_H
+#define INCLUDES_H
+
 #include <LiquidCrystal.h>
 #include <SPI.h>
 #include <Wire.h>
@@ -19,8 +22,8 @@
 #include "util/ArrayHash.h"
 #include "util/signum.h"
 
-#include "util/hardware/buttons.h"
-#include "util/hardware/DS_OLED.h"
+#include "hardware/includes/buttons.h"
+#include "hardware/includes/DS_OLED.h"
 
 //#include "modeNums.h"
 #include "bitmaps.h"
@@ -30,11 +33,6 @@
 #include "notifications.h"
 #include "musicMetaData.h"
 
-#include "globalVars.h"
+#include "global/includes/globalVars.h"
 
-#include "musicViewer.h"
-#include "MainMenu.h"
-#include "NotViewer.h"
-#include "FocusMode.h"
-#include "HealthViewer.h"
-#include "buttonTest.h"
+#endif // INCLUDES_H

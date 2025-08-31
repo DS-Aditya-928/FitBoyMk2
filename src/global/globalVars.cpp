@@ -1,5 +1,4 @@
-#ifndef GLOBALVARS_H
-#define GLOBALVARS_H
+#include "../includes.h"
 
 ESP32Time rtc(0);
 BLE2902* clientCC;
@@ -13,8 +12,6 @@ DFRobot_Heartrate heartrate(DIGITAL_MODE);
 #define OLED_RESET -1
 DS_OLED oled = DS_OLED(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-//ScrollText.oled = &oled;
-
 #define D4 15
 #define D5 2
 #define D6 4
@@ -27,5 +24,3 @@ std::vector<NotApp> nSenders;
 float caloriesBurned;
 
 MusicMeta musicMeta;
-
-#endif // GLOBALVARS_H

@@ -1,4 +1,5 @@
 #include "src/includes.h"
+#include "src/apps.h"
 
 void setup()
 {

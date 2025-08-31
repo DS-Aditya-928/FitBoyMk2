@@ -1,12 +1,8 @@
-class DS_OLED : public Adafruit_SH1106G {
-public:
-  DS_OLED(int a, int b, TwoWire* c, int d)
-    : Adafruit_SH1106G(a, b, c, d) {
-  }
+#include "../includes.h"
 
-  //uint8_t buf[8 * 1];
-  std::unordered_map<std::array<uint16_t, 2>, uint8_t*, ArrayHash> backPixelBuf, frontPixelBuf;
-  void printScrollText(String text, long startTime, int maxPixels = 128) {
+#define speedCon 300
+
+void DS_OLED::printScrollText(String text, long startTime, int maxPixels = 128) {
     this->setTextWrap(false);
 
     uint16_t l = 0;
@@ -27,19 +23,18 @@ public:
 
     if (!backPixelBuf.count({ oneLet, h })) {
       backPixelBuf[{ oneLet, h }] = (uint8_t*)malloc(((oneLet + 7) / 8) * h);
-      Serial.println("new allocb");
+      //Serial.println("new allocb");
     }
 
     if (!frontPixelBuf.count({ oneLet, h })) {
       frontPixelBuf[{ oneLet, h }] = (uint8_t*)malloc(((oneLet + 7) / 8) * h);
-      Serial.println("new allocf");
+      //Serial.println("new allocf");
     }
 
     uint8_t* bBuf = backPixelBuf[{ oneLet, h }];
     uint8_t* fBuf = frontPixelBuf[{ oneLet, h }];
     
     if (pixNeeded > 0) {
-#define speedCon 300
       int maxChar = maxPixels / oneLet;
       int numCycleChars = text.length() - maxChar;
       bVal = (int)(((millis() - startTime) / speedCon) % max((numCycleChars * 2), 1)) - numCycleChars;
@@ -101,4 +96,3 @@ public:
 
     this->setTextWrap(true);
   }
-};
