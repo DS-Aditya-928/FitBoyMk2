@@ -1,36 +1,4 @@
-#include <vector>
-class App
-{
-public:
-  bool enabled = true;
-  bool active = false;
-  void (*mainFunc)(void*);
-  void (*bgFunc)(void*);
-  void (*initFunc)(void*);
-  std::vector<BTInstance*> btClasses;
-
-  App()
-  {
-  }
-
-  App(void (*initFunc)(void*), void (*mainFunc)(void*), void (*bgFunc)(void*), BTInstance* btClass = new BTInstance(), bool enabled = true)  //GENERAL FORMAT. main func is responsible for displaying stuff and is only called when app is active
-  {                                                                                                                                          //bgFunc always runs.
-    this->initFunc = initFunc;
-    this->mainFunc = mainFunc;
-    this->bgFunc = bgFunc;
-    this->btClasses.push_back(btClass);
-    this->enabled = enabled;
-  }
-
-  App(void (*initFunc)(void*), void (*mainFunc)(void*), void (*bgFunc)(void*), std::vector<BTInstance*> btClasses, bool enabled = true)  //GENERAL FORMAT. main func is responsible for displaying stuff and is only called when app is active
-  {                                                                                                                 //bgFunc always runs.
-    this->initFunc = initFunc;
-    this->mainFunc = mainFunc;
-    this->bgFunc = bgFunc;
-    this->btClasses = btClasses;
-    this->enabled = enabled;
-  }
-};
+#include "../includes.h"
 
 namespace AppManager
 {

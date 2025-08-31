@@ -29,7 +29,7 @@
 #include "bitmaps.h"
 #include "LCDHandler.h"
 #include "BTManager.h"
-#include "App.h"
+#include "framework/includes/App.h"
 #include "notifications.h"
 #include "musicMetaData.h"
 
