@@ -19,9 +19,8 @@
 #include "util/ArrayHash.h"
 #include "util/signum.h"
 
-#include "buttons.h"
-
-#include "DS_OLED.h"
+#include "util/hardware/buttons.h"
+#include "util/hardware/DS_OLED.h"
 
 //#include "modeNums.h"
 #include "bitmaps.h"
