@@ -28,7 +28,7 @@
 //#include "modeNums.h"
 #include "bitmaps.h"
 #include "framework/includes/LCDHandler.h"
-#include "BTManager.h"
+#include "framework/includes/BTManager.h"
 #include "framework/includes/App.h"
 #include "notifications.h"
 #include "musicMetaData.h"

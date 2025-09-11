@@ -1,18 +1,4 @@
-#include "BLEDevice.h"
-#include "BLECharacteristic.h"
-
-class BTInstance
-{
-public:
-  String uuid = "";
-  uint32_t bt_characteristics;
-  BLECharacteristicCallbacks* btClass;
-  BLECharacteristic* characteristic;
-
-  BTInstance();
-  BTInstance(String uuid, uint32_t bt_characteristics, BLECharacteristicCallbacks* btClass);
-};
-
+#include "../includes.h"
 
 namespace BTManager
 {

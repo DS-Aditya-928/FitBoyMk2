@@ -37,7 +37,7 @@ void focusMenu(void* arg)
   {
     case SELECT_B:
       {
-        LCDManager::dataTw[2][selectedIndex]->setDispState(!(LCDManager::dataTw[2][selectedIndex]->getDispState()));
+        //LCDManager::dataTw[2][selectedIndex]->setDispState(!(LCDManager::dataTw[2][selectedIndex]->getDispState()));
         delay(buttonDelay);
         break;
       }
@@ -71,6 +71,7 @@ void focusMenu(void* arg)
 
     case DOWN_B:
       {
+        /*
         if (selectedIndex < LCDManager::dataTw[2].size() - 1)
         {
           selectedIndex++;
@@ -80,7 +81,7 @@ void focusMenu(void* arg)
           }
           delay(buttonDelay);
         }
-
+        */
         break;
       }
   }
