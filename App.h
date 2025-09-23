@@ -32,8 +32,6 @@ public:
   }
 };
 
-#include "AppList.h"
-
 namespace AppManager
 {
 std::vector<App*> appList = {};
