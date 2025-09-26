@@ -2,10 +2,10 @@
 #define APPS_H
 
 #include "musicViewer.h"
-#include "MainMenu.h"
+#include "apps/MainMenu/MainMenu.h"
 #include "NotViewer.h"
-#include "FocusMode.h"
-#include "HealthViewer.h"
-#include "buttonTest.h"
+#include "apps/FocusMode/FocusMode.h"
+#include "apps/HealthViewer/HealthViewer.h"
+#include "apps/ButtonTest/buttonTest.h"
 
 #endif // APPS_H
