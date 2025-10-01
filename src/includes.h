@@ -30,8 +30,9 @@
 #include "framework/includes/LCDHandler.h"
 #include "framework/includes/BTManager.h"
 #include "framework/includes/App.h"
-#include "notifications.h"
-#include "musicMetaData.h"
+
+#include "apps/NotificationViewer/notifications.h"
+#include "apps/MusicViewer/musicMetaData.h"
 
 #include "global/includes/globalVars.h"
 
