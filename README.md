@@ -15,13 +15,11 @@ FitBoyMk2 is a smartwatch built using an ESP32 microcontroller. The device can c
 
 ## Features
 
-* **App-based Interface:** The device uses an app manager to switch between different applications.
-* **Main Menu:** A simple and intuitive main menu to navigate through the apps.
+* **Time:** Duh
 * **Notification Viewer:** Displays notifications from your connected smartphone.
 * **Focus Mode:** Uses the secondary LCD to display information from an App regardless of if the app is currently active.
-* **Health Viewer:** Shows health-related data.
+* **Health Viewer:** Shows heartrate and estimates calories burnt.
 * **Music Viewer:** Displays currently playing music information from your connected phone and provides playback control.
-* **Bluetooth Connectivity:** Connects to your smartphone for data exchange.
 * **Dual Display:** Uses both an OLED and an LCD screen for displaying information.
 
 ---
@@ -50,7 +48,7 @@ FitBoyMk2 is a smartwatch built using an ESP32 microcontroller. The device can c
 
 1.  **Clone the repository:**
     ```
-    git clone [https://github.com/your-username/FitBoyMk2.git](https://github.com/your-username/FitBoyMk2.git)
+    git clone https://github.com/DS-Aditya-928/FitBoyMk2.git
     ```
 2.  **Open the project in Arduino IDE:**
     Open the `FitBoyMk2.ino` file in the Arduino IDE.
@@ -63,14 +61,14 @@ FitBoyMk2 is a smartwatch built using an ESP32 microcontroller. The device can c
 
 ## Code Overview
 
-The main file is `FitBoyMk2.ino`, which initializes the device and the app manager. The core logic is modularized into different files:
+The main file is `FitBoyMk2.ino`, which initializes the app manager and sets up the displays. The AppManager initializes the BTManager. The core logic is modularized into different files:
 
 * `App.h`: Defines the base class for all applications.
 * `MainMenu.h`, `NotViewer.h`, `FocusMode.h`, `HealthViewer.h`, `musicViewer.h`: These files contain the specific logic for each application.
-* `BTManager.h`: Handles Bluetooth connectivity and callbacks.
+* `BTManager.h`: Handles Bluetooth connectivity and callbacks. Provides the BTInstance class for Apps to communicate over bluetooth.
 * `LCDHandler.h`: This file manages the LCD, including a priority-based writing system and backlight control.
 * `DS_OLED.h`: This file extends the `Adafruit_SH1106G` library to provide a custom function for scrolling text on the OLED display.
 * `buttons.h`: Handles button inputs.
 * `includes.h`: Includes all the necessary header files and libraries.
-* `globalVars.h`: Contains global variables used across the project.
+* `globalVars.h`: Contains global variables used across the project. Mostly unused, should remove.
 * `bitmaps.h`: Stores bitmaps for icons and images.
