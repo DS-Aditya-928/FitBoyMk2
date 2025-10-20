@@ -16,7 +16,7 @@ void setup()
 
   LCDManager::begin(D8, D9, D4, D5, D6, D7);
 
-  AppManager::appList = {&mmApp, &nvApp, &fmApp, &hvApp, &mvApp};
+  AppManager::appList = {&mmApp, &nvApp, &fmApp, &hvApp, &mvApp};//, &buttonTestApp};
 
   AppManager::begin();
   

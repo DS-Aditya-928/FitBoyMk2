@@ -37,3 +37,4 @@ template <typename T> int signum(T val)
 #include "NotViewer.h"
 #include "FocusMode.h"
 #include "HealthViewer.h"
+#include "buttonTest.h"
