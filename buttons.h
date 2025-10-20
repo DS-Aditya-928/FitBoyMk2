@@ -11,8 +11,11 @@ int lastButtons[NumSamples];
 
 int cB()
 {
-  int val = (((int)((analogRead(12) * 1.1f) + 30))/100);
+  int inp = analogRead(12);
+  int  val = (inp/100) + (int)((inp%100) >= 50);
+
   //Serial.println(analogRead(12));
+  //Serial.println(val);
 
   for (int i = NumSamples - 1; i > 0; i--)
   {
@@ -29,11 +32,6 @@ int cB()
     {
       aS = false;
     }
-  }
-  
-  if(val == 0)
-  {
-    //Serial.println("ZERO");
   }
 
   if(aS)

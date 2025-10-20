@@ -1,13 +1,10 @@
-class DS_OLED : public Adafruit_SH1106G
-{
+class DS_OLED : public Adafruit_SH1106G {
 public:
   DS_OLED(int a, int b, TwoWire* c, int d)
-    : Adafruit_SH1106G(a, b, c, d)
-  {
+    : Adafruit_SH1106G(a, b, c, d) {
   }
 
-  void printScrollText(String text, long startTime, int maxPixels = 128)
-  {
+  void printScrollText(String text, long startTime, int maxPixels = 128) {
     //Adafruit_GFX_Button testButton;
     //testButton.initButton(this, this->getCursorX() + 15, this->getCursorY() + 4, 30, 8, SH110X_WHITE, SH110X_BLACK, SH110X_WHITE, "Testygdfghjuid", 1, 1);
     //testButton.drawButton();
@@ -31,11 +28,11 @@ public:
     int cursorComp;
     int pxAfterLim;
 
-    if (pixNeeded > 0)
+    if (pixNeeded > 0) 
     {
 #define speedCon 300
-      int maxChar = floor((float)(maxPixels)/ (float)(l / text.length()));
       oneLet = ((float)l / text.length());
+      int maxChar = floor((float)(maxPixels) / oneLet);
 
       int numCycleChars = text.length() - maxChar;
 
@@ -49,21 +46,17 @@ public:
       pxAfterLim = (text.length() * oneLet) - cursorComp - maxPixels + 1;
 
       //Serial.println(String(lCounter) + " " + String(pCounter) + " " + String(pxAfterLim) + " " + String(bVal) + " Demo");
-
-      if (pxAfterLim > 0)
-      {
+      Serial.println(String(pxAfterLim) + " " + String(oneLet));
+      if (pxAfterLim > 0) {
         fArray = (int8_t**)malloc(h * sizeof(int8_t*));
 
-        for (int j = 0; j < h; j++)
-        {
+        for (int j = 0; j < h; j++) {
           fArray[j] = (int8_t*)malloc(ceil((float)(pxAfterLim / 8.f)));
           memset(fArray[j], 0, ceil((float)(pxAfterLim / 8.f)));
 
-          for (int i = 0; i <= pxAfterLim; i++)
-          {
+          for (int i = 0; i <= pxAfterLim; i++) {
             //Serial.print(this->getPixel(this->getCursorX() + pxAfterLim + maxPixels - i, this->getCursorY() + j) ? '1' : ' ');
-            if (this->getPixel(this->getCursorX() + pxAfterLim + maxPixels - i - 1, this->getCursorY() + j))
-            {
+            if (this->getPixel(this->getCursorX() + pxAfterLim + maxPixels - i - 1, this->getCursorY() + j)) {
               fArray[j][i / 8] = fArray[j][i / 8] | (1 << i % 8);
             }
           }
@@ -76,15 +69,12 @@ public:
       {
         bArray = (int8_t**)malloc(h * sizeof(int8_t*));
 
-        for (int j = 0; j < h; j++)
-        {
+        for (int j = 0; j < h; j++) {
           bArray[j] = (int8_t*)malloc(ceil((float)(abs(pCounter) + 1) / 8.f));
           memset(bArray[j], 0, ceil((float)(abs(pCounter) + 1) / 8.f));
 
-          for (int i = 0; i <= abs(cursorComp); i++)
-          {
-            if (this->getPixel(this->getCursorX() - i, this->getCursorY() + j))
-            {
+          for (int i = 0; i <= abs(cursorComp); i++) {
+            if (this->getPixel(this->getCursorX() - i, this->getCursorY() + j)) {
               bArray[j][i / 8] = bArray[j][i / 8] | (1 << i % 8);
             }
           }
@@ -96,12 +86,9 @@ public:
 
     this->print(text);
 
-    if (bArray != nullptr)
-    {
-      for (int j = 0; j < h; j++)
-      {
-        for (int i = 0; i <= abs(cursorComp); i++)
-        {
+    if (bArray != nullptr) {
+      for (int j = 0; j < h; j++) {
+        for (int i = 0; i <= abs(cursorComp); i++) {
           int intI = abs(cursorComp) - i;
           this->writePixel(this->getCursorX() - ((text.length()) * oneLet) + i, this->getCursorY() + j, (bArray[j][intI / 8] >> (int)(intI % 8)) & 1);
         }
@@ -111,12 +98,9 @@ public:
       free(bArray);
     }
 
-    if (fArray != nullptr)
-    {
-      for (int j = 0; j < h; j++)
-      {
-        for (int i = 0; i <= abs(pxAfterLim); i++)
-        {
+    if (fArray != nullptr) {
+      for (int j = 0; j < h; j++) {
+        for (int i = 0; i <= abs(pxAfterLim); i++) {
           this->writePixel(this->getCursorX() - i, this->getCursorY() + j, (fArray[j][i / 8] >> (int)(i % 8)) & 1);
         }
 
@@ -126,5 +110,5 @@ public:
     }
 
     this->setTextWrap(true);
-    }
+  }
 };
