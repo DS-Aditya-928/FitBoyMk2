@@ -1,7 +1,6 @@
 #define TIME_UUID "93c37a10-1f37-11ee-be56-0242ac120002"
 
-void mainMenu(void* arg)
-{
+void mainMenu(void* arg) {
   //Serial.println("MM");
   oled.clearDisplay();
   oled.setTextSize(2);
@@ -15,25 +14,34 @@ void mainMenu(void* arg)
   oled.setCursor((128 - (6 * 3)) / 2, 42);
   oled.print(rtc.getTime("%A").substring(0, 3));
 
-  
-  if (notBuf.size())
+
+  oled.setCursor(0, 58);
+  oled.print("AB");
+  oled.setCursor(42, 58);
+  oled.print("CD");
+  oled.setCursor(12, 50);
+  oled.setTextSize(2);
+  oled.printScrollText("Test Message", 0, 30);
+  uint16_t l = 0;
+  uint16_t h = 0;
+  int16_t def = 0;
+
+  if (notBuf.size()) 
   {
     oled.setCursor(6, 0);
     oled.drawBitmap(0, 0, myBitmapBell, 5, 7, SH110X_WHITE);
     oled.print(notBuf.size());
   }
 
-  
-  if (mvApp.enabled)
-  {
+
+  if (mvApp.enabled) {
     oled.setCursor(0, 10);
     oled.print("M");
   }
 
   oled.display();
 
-  switch (currentButton)
-  {
+  switch (currentButton) {
     case SELECT_B:
       {
         Serial.println("SelectB");
@@ -63,10 +71,8 @@ void mainMenu(void* arg)
   }
 }
 
-class tCB : public BLECharacteristicCallbacks
-{
-  void onWrite(BLECharacteristic* pCharacteristic)
-  {
+class tCB : public BLECharacteristicCallbacks {
+  void onWrite(BLECharacteristic* pCharacteristic) {
     //display notification warning
     //save it in an internal buffer
     String val = pCharacteristic->getValue().c_str();
