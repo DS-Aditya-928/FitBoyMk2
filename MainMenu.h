@@ -14,7 +14,7 @@ void mainMenu(void* arg) {
   oled.setCursor((128 - (6 * 3)) / 2, 42);
   oled.print(rtc.getTime("%A").substring(0, 3));
 
-
+  /*
   oled.setCursor(0, 58);
   oled.print("AB");
   oled.setCursor(42, 58);
@@ -22,6 +22,8 @@ void mainMenu(void* arg) {
   oled.setCursor(12, 50);
   oled.setTextSize(2);
   oled.printScrollText("Test Message", 0, 30);
+  */
+
   uint16_t l = 0;
   uint16_t h = 0;
   int16_t def = 0;

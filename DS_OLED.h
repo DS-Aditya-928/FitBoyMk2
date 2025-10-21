@@ -39,7 +39,7 @@ public:
     uint8_t* fBuf = frontPixelBuf[{ oneLet, h }];
     
     if (pixNeeded > 0) {
-#define speedCon 3000
+#define speedCon 300
       int maxChar = maxPixels / oneLet;
       int numCycleChars = text.length() - maxChar;
       bVal = (int)(((millis() - startTime) / speedCon) % max((numCycleChars * 2), 1)) - numCycleChars;
