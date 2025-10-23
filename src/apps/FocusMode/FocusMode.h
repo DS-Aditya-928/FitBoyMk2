@@ -1,3 +1,5 @@
+namespace LCDManager
+{
 void focusMenu(void* arg)
 {
   static int baseIndex = 0;
@@ -71,7 +73,6 @@ void focusMenu(void* arg)
 
     case DOWN_B:
       {
-        /*
         if (selectedIndex < LCDManager::dataTw[2].size() - 1)
         {
           selectedIndex++;
@@ -81,10 +82,10 @@ void focusMenu(void* arg)
           }
           delay(buttonDelay);
         }
-        */
         break;
       }
   }
 }
+}
 
-App fmApp(NULL, focusMenu, NULL);
+App fmApp(NULL, LCDManager::focusMenu, NULL);
