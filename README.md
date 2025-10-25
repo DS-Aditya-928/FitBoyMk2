@@ -32,13 +32,13 @@ FitBoyMk2 is a smartwatch built using an ESP32 microcontroller. The device can c
     * TC1602 LCD Display (The one I used is mounted on a shield and came with buttons attached)
 * **Input:** 
     * Buttons for user interaction (connected to pin 12 and others defined in `buttons.h`)
-    * SON1303 Heart rate PPG sensor
+    * SON3130 Heart rate PPG sensor
     * MPU 6050 for step detection
 * **Hardware Connectivity**
     * The MPU6050 and the OLED both use the I2C bus to connect to the ESP32. 
     * The LCD uses a 4 bit parallel connection.
     * The buttons are each connected to a voltage divider thus providing an analog signal, which is decoded to determine which button is currently pressed.
-    * THE SON1303 provides a digital signal which is used to calculate the heart rate.
+    * THE SON3130 provides a digital signal which is used to calculate the heart rate.
 
 ---
 
