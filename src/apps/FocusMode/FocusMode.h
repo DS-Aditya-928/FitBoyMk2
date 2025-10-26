@@ -1,5 +1,3 @@
-namespace LCDManager
-{
 void focusMenu(void* arg)
 {
   static int baseIndex = 0;
@@ -11,18 +9,18 @@ void focusMenu(void* arg)
   oled.print("Focus Mode");
   oled.setTextSize(1);
 
-  /*
-  for (int i = baseIndex; i < LCDManager::dataTw[2].size() && (i - baseIndex < 7); i++)
+  
+  for (int i = baseIndex; i < LCDManager::getVisDataArr().size() && (i - baseIndex < 7); i++)
   {
     oled.setCursor(0, 8 + ((i - baseIndex) * 8));
 
-    if (LCDManager::dataTw[2][i]->focusName[0])
+    if (LCDManager::getVisDataArr()[i]->focusName[0])
     {
-      if (LCDManager::dataTw[2][i]->getDispState())
+      if (LCDManager::getVisDataArr()[i]->getDispState())
       {
         oled.setTextColor(0, 1);
       }
-      oled.print(LCDManager::dataTw[2][i]->focusName);
+      oled.print(LCDManager::getVisDataArr()[i]->focusName);
       oled.setTextColor(1, 0);
     }
 
@@ -32,14 +30,14 @@ void focusMenu(void* arg)
       oled.print("<");
     }
   }
-  */
+  
   oled.display();
 
   switch (currentButton)
   {
     case SELECT_B:
       {
-        //LCDManager::dataTw[2][selectedIndex]->setDispState(!(LCDManager::dataTw[2][selectedIndex]->getDispState()));
+        LCDManager::getVisDataArr()[selectedIndex]->setDispState(!(LCDManager::getVisDataArr()[selectedIndex]->getDispState()));
         delay(buttonDelay);
         break;
       }
@@ -73,7 +71,7 @@ void focusMenu(void* arg)
 
     case DOWN_B:
       {
-        if (selectedIndex < LCDManager::dataTw[2].size() - 1)
+        if (selectedIndex < LCDManager::getVisDataArr().size() - 1)
         {
           selectedIndex++;
           if (selectedIndex >= baseIndex + 7)
@@ -86,6 +84,5 @@ void focusMenu(void* arg)
       }
   }
 }
-}
 
-App fmApp(NULL, LCDManager::focusMenu, NULL);
+App fmApp(NULL, focusMenu, NULL);

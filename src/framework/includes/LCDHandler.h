@@ -34,11 +34,10 @@ extern std::vector<LCDWriter*> dataTw[3];  //3 priority states
 extern std::mutex arrayLock;
 }
 
-extern void focusMenu(void* arg);
-
 extern void begin(uint8_t rs, uint8_t en, uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3);
 extern LCDWriter* registerWriter(int priority);
 extern bool getDispState();
+extern std::vector<LCDWriter*> getVisDataArr(void);
 };
 
 #endif // LCDHANDLER_H

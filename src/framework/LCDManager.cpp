@@ -155,6 +155,18 @@ LCDWriter* registerWriter(int priority)
   return (tR);
 }
 
+std::vector<LCDWriter*> getVisDataArr(void)
+{
+  std::vector<LCDWriter*> visArr;
+  arrayLock.lock();
+  for (int i = 0; i < dataTw[2].size(); i++)
+  {
+    visArr.push_back(dataTw[2][i]);
+  }
+  arrayLock.unlock();
+  return (visArr);
+}
+
 bool getDispState()
 {
   return (dispOn);
